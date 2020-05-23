@@ -1,68 +1,49 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Redux就是这么简单--Redux初体验
 
-## Available Scripts
+##　一、前言
 
-In the project directory, you can run:
+​		在一个业务复杂的React项目中，很多组件都保持着自己的状态，模块间和各个组件之间避免不了通信，由于React单向数据流的关系，传递一个状态可能要跨好几个文件，这点为开发带来了极大的不便。
 
-### `npm start`
+​		虽然用发布订阅模式也可以实现组件之间状态的传递，但是对于状态的修改，也只能传递一些回调函数，并不是那么的方便，于是便有了这次的主角-Redux。
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 二、官方文档
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+​		见[Redux官方文档](https://www.redux.org.cn/)
 
-### `npm test`
+​		官方文档是学习一项技术最好的参考，如果有能力阅读文档（特指英文文档），肯定要从文档入手了解这项技术。
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 三、介绍
 
-### `npm run build`
+### 核心概念
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+​		应用中所有的 *state* 都以一个对象树的形式储存在一个单一的 *store* 中。 惟一改变 *state* 的办法是触发 *action*，一个描述发生什么的对象。 为了描述 *action* 如何改变 *state* 树，你需要编写 *reducers*（(previoutState,action)=>newState）。
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### 三大原则
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+		#### 	单一数据源
 
-### `npm run eject`
+​				整个应用的*state*被储存在一棵*object tree*中，并且这个*object tree*只存在于唯一一个store中。
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+	#### 	**State**是只读的
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+​				唯一改变*state*的方法就是触发*action*，*action*是一个用于描述已发生事件的普通对象。
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+	#### 	使用纯函数来执行就改
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+​				为了描述*action*如何改变*state tree*，你需要编写*reducers*。*Reducer*只是一些纯函数，接收先前的*action*和*state*。	
 
-## Learn More
+## 四、代码编写示例
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+​			简单的入门示例：
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+​			创建demo，`create-react-app redux-demo`
 
-### Code Splitting
+![image-20200523132219955](.\assets\image-20200523132219955.png)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+​			安装需要用到的包
 
-### Analyzing the Bundle Size
+```shell
+cd redux-demo
+npm install --save redux react-redux
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
